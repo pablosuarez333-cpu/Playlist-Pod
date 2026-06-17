@@ -1,46 +1,57 @@
-import React from "react";
+import useFetch from "../../hooks/useFetch";
+import Songs from "../Songs";
 
-import Song from "../Song";
+function SearchResults({ artist }) {
+  const url = artist
+    ? `/audiodb/api/v1/json/2/searchalbum.php?s=${encodeURIComponent(
+        artist
+      )}`
+    : null;
 
-import "./styles.css";
+  const {
+    data,
+    loading,
+    error,
+    refetch,
+  } = useFetch(url);
 
-function SearchResults({
-  songs,
-  addToLibrary,
-  searchTerm,
-  setSearchTerm,
-}) {
+  if (!artist) {
+    return (
+      <p>
+        Busca un artista para comenzar.
+      </p>
+    );
+  }
 
-  return (
-    <section className="search-results">
+  if (loading) {
+    return <h2>Cargando...</h2>;
+  }
 
-      <h2>Resultados de búsqueda</h2>
+  if (error) {
+    return (
+      <div>
+        <p>
+          Hubo un problema al cargar los datos.
+        </p>
 
-      <input
-        type="text"
-        placeholder="Buscar canción o artista..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="search-input"
-      />
+        <p>{error}</p>
 
-      {
-        songs.length === 0 ? (
-          <p>No se encontraron canciones.</p>
-        ) : (
-          songs.map((song) => (
-            <Song
-              key={song.id}
-              song={song}
-              showButton={true}
-              addToLibrary={addToLibrary}
-            />
-          ))
-        )
-      }
+        <button onClick={refetch}>
+          Reintentar
+        </button>
+      </div>
+    );
+  }
 
-    </section>
-  );
+  if (!data || !data.album) {
+    return (
+      <p>
+        No se encontraron resultados.
+      </p>
+    );
+  }
+
+  return <Songs songs={data.album} />;
 }
 
 export default SearchResults;

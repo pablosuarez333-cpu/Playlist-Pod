@@ -1,18 +1,17 @@
-//
+function Footer() {
+  const currentYear = new Date().getFullYear();
 
-const footer = () => {
   return (
-    <footer>
-      <h1>
-        <nav>
-          <span>
+    <footer className="footer">
+      <p>
+        © {currentYear} iPod Playlist
+      </p>
 
-          </span>
-        </nav>
-      </h1>
+      <p>
+        Datos proporcionados por TheAudioDB
+      </p>
     </footer>
-  )
+  );
 }
 
-export default footer
-
+export default Footer;

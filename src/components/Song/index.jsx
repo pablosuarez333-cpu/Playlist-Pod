@@ -1,23 +1,26 @@
-import React from "react";
-import "./styles.css";
+import { Link } from "react-router-dom";
 
-function Song({ song, showButton, addToLibrary }) {
+function Song({ song }) {
+
   return (
-    <div className="song-card">
-      <img src={song.image} alt={song.title} />
+    <article className="song-card">
 
-      <h3>{song.title}</h3>
+      <img
+        src={song.strAlbumThumb}
+        alt={song.strAlbum}
+      />
 
-      <p>{song.artist}</p>
+      <h3>{song.strAlbum}</h3>
 
-      <span>{song.duration}</span>
+      <p>{song.strArtist}</p>
 
-      {showButton && (
-        <button onClick={() => addToLibrary(song)}>
-          Guardar
-        </button>
-      )}
-    </div>
+      <p>{song.intYearReleased}</p>
+
+      <Link to={`/song/${song.idAlbum}`}>
+        Ver detalles
+      </Link>
+
+    </article>
   );
 }
 

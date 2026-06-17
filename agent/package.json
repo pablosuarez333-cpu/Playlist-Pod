@@ -1,0 +1,16 @@
+{
+  "name": "ipod-agent",
+  "version": "0.1.0",
+  "description": "Minimal scaffold for an autonomous agent",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

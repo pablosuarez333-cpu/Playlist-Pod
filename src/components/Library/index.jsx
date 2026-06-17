@@ -1,38 +1,26 @@
-import React from "react";
+import { useState } from "react";
 
-import "./styles.css";
+import Header from "../Header";
+import Footer from "../Footer";
+import SearchBar from "../SearchBar";
+import SearchResults from "../SearchResults";
 
-function Library({ songs, isOpen }) {
+function Library() {
+
+  const [artist, setArtist] = useState("Coldplay");
 
   return (
-    <aside className={`library-sidebar ${isOpen ? "open" : ""}`}>
+    <>
+      <Header />
 
-      <h2>Mi Biblioteca</h2>
+      <main>
+        <SearchBar onSearch={setArtist} />
 
-      {
-        songs.length === 0 ? (
-          <p>No hay canciones guardadas.</p>
-        ) : (
-          songs.map((song) => (
+        <SearchResults artist={artist} />
+      </main>
 
-            <div className="library-song" key={song.id}>
-
-              <img
-                src={song.image}
-                alt={song.title}
-              />
-
-              <div>
-                <h4>{song.title}</h4>
-                <p>{song.artist}</p>
-              </div>
-
-            </div>
-          ))
-        )
-      }
-
-    </aside>
+      <Footer />
+    </>
   );
 }
 
