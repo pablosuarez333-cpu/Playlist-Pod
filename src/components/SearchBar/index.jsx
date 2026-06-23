@@ -1,4 +1,4 @@
-
+import "./styles.scss";
 
 import { useState } from "react";
 
@@ -16,7 +16,7 @@ function SearchBar({ onSearch }) {
 
   return (
 
-    <div className="search-container">
+    <div className="mb-4" >
 
       <form
         className="search-bar"

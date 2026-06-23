@@ -1,3 +1,5 @@
+import "./styles.scss";
+
 import Song from "../Song";
 
 function Songs({ songs }) {

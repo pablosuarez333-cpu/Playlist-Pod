@@ -1,0 +1,32 @@
+.song-detail {
+  max-width: 1000px;
+
+  margin: 2rem auto;
+
+  background: white;
+
+  padding: 2rem;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.song-detail img {
+  width: 100%;
+  max-width: 400px;
+
+  display: block;
+  margin: 0 auto 2rem;
+
+  border-radius: 16px;
+}
+
+.song-detail h2 {
+  margin-bottom: 1rem;
+}
+
+.song-detail p {
+  margin-bottom: 0.75rem;
+}

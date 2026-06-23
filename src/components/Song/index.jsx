@@ -1,3 +1,5 @@
+import "./styles.scss";
+
 import { Link } from "react-router-dom";
 
 function Song({ song }) {
